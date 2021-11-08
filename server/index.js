@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors");
 const app = express();
+const algorithmia = require("algorithmia"); //fetching from ai projects
 
 //mysql://b476717618491f:9f74fa26@us-cdbr-east-04.cleardb.com/heroku_883cdc9b7276b4a?reconnect=true
 
@@ -53,6 +54,17 @@ app.put("/api/update", (req, res) => {
     if (err) console.log(err);
   });
 });
+
+const apiKey = "simpTh/X9pl1sE6NZuqB1wFmv0L1";
+const client = algorithmia.client(apiKey);
+const input_sms =
+  "3, 1, nan, female, متزوج/ة, 1, 5, 3, 2000, انا ما اكره الخضار و أحب البطاطس";
+client
+  .algo("salwakr1/famecare/0.1.0")
+  .pipe(input_sms)
+  .then(function (response) {
+    console.log(response.get());
+  });
 
 const PORT = process.env.PORT || 3001;
 
