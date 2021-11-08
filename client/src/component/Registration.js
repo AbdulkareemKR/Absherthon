@@ -58,193 +58,206 @@ function Registration() {
   // };
 
   return (
-    <div>
-      <div>
-        <div className={styles.containter}>
-          <Modal.Header className={styles.title}>
-            <Modal.Title
-              className={styles.title}
-              id="contained-modal-title-vcenter"
+    <div className={styles.containter}>
+      <Modal.Header className={styles.title}>
+        <Modal.Title
+          className={styles.title}
+          id="contained-modal-title-vcenter"
+        >
+          استعلام
+          <BsFillPeopleFill className={styles.icons} />
+        </Modal.Title>
+      </Modal.Header>
+      <Form className={styles.formStyle}>
+        <Container fluid style={{ margin: "auto" }}>
+          <Modal.Body className="show-grid">
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> عدد الاستشارات الهاتفية
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  name="calls"
+                  required
+                  className={styles.input}
+                  type="number"
+                  placeholder="أدخل رقما"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> عدد الاستشارات الكتابية
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  name="written"
+                  required
+                  className={styles.input}
+                  type="number"
+                  placeholder="أدخل رقما"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> العمر
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  name="age"
+                  required
+                  className={styles.input}
+                  type="number"
+                  placeholder="أدخل رقما"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> الحالة الاجتماعية
+              </Form.Label>
+              <Col>
+                <Form.Check
+                  inline
+                  label="متزوج/ة"
+                  name="martialStatus"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+                <Form.Check
+                  inline
+                  label="غير متزوج/ة"
+                  name="martialStatus"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> الجنس
+              </Form.Label>
+              <Col>
+                <Form.Check
+                  inline
+                  label="ذكر"
+                  name="gender"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+                <Form.Check
+                  inline
+                  label="أنثى"
+                  name="gender"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> هل تم تفعيل الحساب؟
+              </Form.Label>
+              <Col>
+                <Form.Check
+                  inline
+                  label="نعم"
+                  name="verified"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+                <Form.Check
+                  inline
+                  label="لا"
+                  name="verified"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> عدد الجلسات التي أخذها
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  name="sessionCount"
+                  required
+                  className={styles.input}
+                  type="number"
+                  placeholder="أدخل رقما"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> مجموع الجلسات المدفوعة
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  name="paidCount"
+                  required
+                  className={styles.input}
+                  type="number"
+                  placeholder="أدخل رقما"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> مجموع كل المبالغ التي
+                دفعها
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  name="price"
+                  required
+                  className={styles.input}
+                  type="number"
+                  placeholder="أدخل قيمة المبلغ"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} className={styles.group}>
+              <Form.Label className={styles.label} column sm="4">
+                <FaIdCard className={styles.icons} /> مشكلة تعرض لها المستخدم
+              </Form.Label>
+              <Col>
+                <Form.Control
+                  name="problem"
+                  required
+                  className={styles.input}
+                  type="text"
+                  placeholder="اكتب تفاصيل المشكلة"
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer className={styles.footer}>
+            <Button
+              className={`${styles.createButton} ${styles.submit}`}
+              type="submit"
             >
-              استعلام
-              <BsFillPeopleFill className={styles.icons} />
-            </Modal.Title>
-          </Modal.Header>
-          <Form className={styles.formStyle}>
-            <Container fluid style={{ margin: "auto" }}>
-              <Modal.Body className="show-grid">
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> عدد الاستشارات
-                    الهاتفية
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      name="calls"
-                      required
-                      className={styles.input}
-                      type="number"
-                      placeholder="أدخل رقما"
-                      onChange={handleChange}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> عدد الاستشارات
-                    الكتابية
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      required
-                      className={styles.input}
-                      type="number"
-                      placeholder="أدخل رقما"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> العمر
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      required
-                      className={styles.input}
-                      type="number"
-                      placeholder="أدخل رقما"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> الحالة الاجتماعية
-                  </Form.Label>
-                  <Col>
-                    <Form.Check
-                      inline
-                      label="متزوج/ة"
-                      name="group1"
-                      type="radio"
-                      id="inline-radio-1"
-                    />
-                    <Form.Check
-                      inline
-                      label="غير متزوج/ة"
-                      name="group1"
-                      type="radio"
-                      id="inline-radio-1"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> الجنس
-                  </Form.Label>
-                  <Col>
-                    <Form.Check
-                      inline
-                      label="ذكر"
-                      name="group1"
-                      type="radio"
-                      id="inline-radio-1"
-                    />
-                    <Form.Check
-                      inline
-                      label="أنثى"
-                      name="group1"
-                      type="radio"
-                      id="inline-radio-1"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> هل تم تفعيل الحساب؟
-                  </Form.Label>
-                  <Col>
-                    <Form.Check
-                      inline
-                      label="نعم"
-                      name="group2"
-                      type="radio"
-                      id="inline-radio-1"
-                    />
-                    <Form.Check
-                      inline
-                      label="لا"
-                      name="group2"
-                      type="radio"
-                      id="inline-radio-1"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> عدد الجلسات التي أخذها
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      required
-                      className={styles.input}
-                      type="number"
-                      placeholder="أدخل رقما"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> مجموع الجلسات المدفوعة
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      required
-                      className={styles.input}
-                      type="number"
-                      placeholder="أدخل رقما"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> مجموع كل المبالغ التي
-                    دفعها
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      required
-                      className={styles.input}
-                      type="number"
-                      placeholder="أدخل قيمة المبلغ"
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className={styles.group}>
-                  <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> مشكلة تعرض لهاالمستخدم
-                  </Form.Label>
-                  <Col>
-                    <Form.Control
-                      required
-                      className={styles.input}
-                      type="number"
-                      placeholder="اكتب تفاصيل المشكلة"
-                    />
-                  </Col>
-                </Form.Group>
-              </Modal.Body>
-              <Modal.Footer className={styles.footer}>
-                <Button
-                  className={`${styles.createButton} ${styles.submit}`}
-                  type="submit"
-                >
-                  بحث
-                </Button>
-              </Modal.Footer>
-            </Container>
-          </Form>
-        </div>
-      </div>
+              بحث
+            </Button>
+          </Modal.Footer>
+        </Container>
+      </Form>
+      {console.log(clientForm)}
     </div>
   );
 }
