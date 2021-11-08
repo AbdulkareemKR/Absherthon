@@ -68,14 +68,24 @@ app.post("/api/main", (req, res) => {
   const price = req.body.price;
   const problem = req.body.problem;
 
-  const input_sms = `${calls}, ${written}, ${age}, ${gender}, ${martialStatus}, ${verified}, ${sessionCount} ${paidCount}, ${price}, ${problem}`;
-  res.send(input_sms);
+  const input_sms = `${calls}, ${written}, ${age}, ${gender}, ${martialStatus}, ${verified}, ${sessionCount}, ${paidCount}, ${price}, ${problem}`;
+  console.log(input_sms);
+
+  const apiKey = "simpTh/X9pl1sE6NZuqB1wFmv0L1";
+  const client = algorithmia.client(apiKey);
+  client
+    .algo("salwakr1/famecare/0.1.0")
+    .pipe(input_sms)
+    .then(function (response) {
+      console.log(response.get());
+    });
 });
 
 const apiKey = "simpTh/X9pl1sE6NZuqB1wFmv0L1";
 const client = algorithmia.client(apiKey);
 const input_sms =
   "3, 1, nan, female, متزوج/ة, 1, 5, 3, 2000, انا ما اكره الخضار و أحب البطاطس";
+console.log(input_sms);
 client
   .algo("salwakr1/famecare/0.1.0")
   .pipe(input_sms)

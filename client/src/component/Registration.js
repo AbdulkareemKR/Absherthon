@@ -24,8 +24,6 @@ function Registration() {
     problem: "",
   });
   const [clientForm, setClientForm] = useState(clientData);
-  // const [review, setReview] = useState("");
-  // const [movieReviewList, setMovieReviewList] = useState([]);
 
   const submitReview = (e) => {
     e.preventDefault();
@@ -40,33 +38,16 @@ function Registration() {
       paidCount: clientForm.paidCount,
       price: clientForm.price,
       problem: clientForm.problem,
-      // }).then((response) => {
-      //   console.log(response.data);
     });
-    // setMovieName("");
-    // setReview("");
-    // setMovieReviewList([
-    //   ...movieReviewList,
-    //   { name: movieName, review: review },
-    // ]);
   };
 
   const handleChange = (e) => {
     setClientForm({
       ...clientForm,
-
       // Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     });
   };
-
-  // const updateReview = (movie) => {
-  //   Axios.put("https://crud-back-end-node.herokuapp.com/api/update", {
-  //     movieName: movie,
-  //     movieReview: newReview,
-  //   });
-  //   setNewReview("");
-  // };
 
   return (
     <div className={styles.containter}>
@@ -136,7 +117,7 @@ function Registration() {
                   inline
                   label="متزوج/ة"
                   name="martialStatus"
-                  value={1}
+                  value={"متزوج/ة"}
                   type="radio"
                   id="inline-radio-1"
                   onChange={handleChange}
@@ -144,7 +125,7 @@ function Registration() {
                 <Form.Check
                   inline
                   label="غير متزوج/ة"
-                  value={0}
+                  value={"غير متزوج/ة"}
                   name="martialStatus"
                   type="radio"
                   id="inline-radio-1"
@@ -158,7 +139,7 @@ function Registration() {
               </Form.Label>
               <Col>
                 <Form.Check
-                  value={0}
+                  value={"male"}
                   inline
                   label="ذكر"
                   name="gender"
@@ -167,7 +148,7 @@ function Registration() {
                   onChange={handleChange}
                 />
                 <Form.Check
-                  value={1}
+                  value={"female"}
                   inline
                   label="أنثى"
                   name="gender"
