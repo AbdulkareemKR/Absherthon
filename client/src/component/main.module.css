@@ -6,6 +6,9 @@
 
 .containter {
   z-index: 5;
+  margin: auto;
+  width: 100%;
+  max-width: 700px;
 }
 
 .backgroundLogo {
@@ -96,7 +99,6 @@
   text-align: right;
   margin: auto;
   margin-bottom: 30px !important;
-  width: 50%;
 }
 
 .group {
