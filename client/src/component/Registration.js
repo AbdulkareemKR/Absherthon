@@ -62,7 +62,8 @@ function Registration() {
 
   return (
     <div>
-      <Form>
+      hehe
+      {/* <Form>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -159,7 +160,7 @@ function Registration() {
             </div>
           )}
         </div>
-      </Form>
+      </Form> */}
     </div>
   );
 }
