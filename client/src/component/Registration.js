@@ -24,6 +24,7 @@ function Registration() {
     problem: "",
   });
   const [clientForm, setClientForm] = useState(clientData);
+  const [result, setResult] = useState("");
 
   const submitReview = (e) => {
     e.preventDefault();
@@ -41,10 +42,16 @@ function Registration() {
     });
   };
 
+  const getResult = () => {
+    Axios.get("http://localhost:3001/api/get").then((response) => {
+      setResult(response.data);
+    });
+  };
+
   const handleChange = (e) => {
     setClientForm({
       ...clientForm,
-      // Trimming any whitespace
+      // Trimming any whitepace
       [e.target.name]: e.target.value.trim(),
     });
   };
@@ -244,12 +251,16 @@ function Registration() {
                 />
               </Col>
             </Form.Group>
+            <div className={styles.result}>{result}</div>
           </Modal.Body>
           <Modal.Footer className={styles.footer}>
             <Button
               className={`${styles.createButton} ${styles.submit}`}
               type="submit"
-              onClick={submitReview}
+              onClick={(e) => {
+                submitReview(e);
+                getResult();
+              }}
             >
               بحث
             </Button>

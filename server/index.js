@@ -78,6 +78,9 @@ app.post("/api/main", (req, res) => {
     .pipe(input_sms)
     .then(function (response) {
       console.log(response.get());
+      app.get("/api/get", (req, res) => {
+        res.send(response.get());
+      });
     });
 });
 
