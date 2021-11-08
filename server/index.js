@@ -55,12 +55,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   });
 // });
 
+// app.get("/", (req, res) => {});
 app.post("/api/main", (req, res) => {
-  const a = req.body.calls;
-  const b = req.body.written;
-  console.log(a, b);
-  console.log("yes");
-  res.send(req.body.calls);
+  const calls = req.body.calls;
+  const written = req.body.written;
+  const age = req.body.age;
+  const gender = req.body.gender;
+  const martialStatus = req.body.martialStatus;
+  const verified = req.body.verified;
+  const sessionCount = req.body.sessionCount;
+  const paidCount = req.body.paidCount;
+  const price = req.body.price;
+  const problem = req.body.problem;
+
+  const input_sms = `${calls}, ${written}, ${age}, ${gender}, ${martialStatus}, ${verified}, ${sessionCount} ${paidCount}, ${price}, ${problem}`;
+  res.send(input_sms);
 });
 
 const apiKey = "simpTh/X9pl1sE6NZuqB1wFmv0L1";
