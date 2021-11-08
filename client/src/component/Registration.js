@@ -1,40 +1,52 @@
-import React, { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
-import { Fade } from "react-awesome-reveal";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Axios from "axios";
+// import Axios from "axios";
 import "../App.css";
-import Spinner from "react-bootstrap/Spinner";
 import styles from "./main.module.css";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Col, Row, Form } from "react-bootstrap";
 import { FaIdCard } from "react-icons/fa";
 import { BsFillPeopleFill } from "react-icons/bs";
-import { HiTag } from "react-icons/hi";
-import { MdEmail } from "react-icons/md";
-import { AiFillUnlock } from "react-icons/ai";
 import Container from "react-bootstrap/Container";
-import NumericInput from "react-numeric-input";
 
 function Registration() {
-  const [movieName, setMovieName] = useState("");
-  const [review, setReview] = useState("");
-  const [movieReviewList, setMovieReviewList] = useState([]);
-  const [newReview, setNewReview] = useState("");
-  const [edit, setEdit] = useState(false);
+  const clientData = Object.freeze({
+    calls: "",
+    written: "",
+    age: "",
+    gender: "",
+    martialStatus: "",
+    verified: "",
+    sessionCount: "",
+    paidCount: "",
+    price: "",
+    problem: "",
+  });
+  const [clientForm, setClientForm] = useState(clientData);
+  // const [review, setReview] = useState("");
+  // const [movieReviewList, setMovieReviewList] = useState([]);
 
-  const submitReview = () => {
-    Axios.post("https://crud-back-end-node.herokuapp.com/api/insert", {
-      movieName: movieName,
-      movieReview: review,
+  // const submitReview = () => {
+  //   Axios.post("https://crud-back-end-node.herokuapp.com/api/insert", {
+  //     movieName: movieName,
+  //     movieReview: review,
+  //   });
+  //   setMovieName("");
+  //   setReview("");
+  //   setMovieReviewList([
+  //     ...movieReviewList,
+  //     { name: movieName, review: review },
+  //   ]);
+  // };
+
+  const handleChange = (e) => {
+    setClientForm({
+      ...clientForm,
+
+      // Trimming any whitespace
+      [e.target.name]: e.target.value.trim(),
     });
-    setMovieName("");
-    setReview("");
-    setMovieReviewList([
-      ...movieReviewList,
-      { name: movieName, review: review },
-    ]);
   };
 
   // const updateReview = (movie) => {
@@ -63,81 +75,170 @@ function Registration() {
               <Modal.Body className="show-grid">
                 <Form.Group as={Row} className={styles.group}>
                   <Form.Label className={styles.label} column sm="4">
-                    <FaIdCard className={styles.icons} /> الاسم
+                    <FaIdCard className={styles.icons} /> عدد الاستشارات
+                    الهاتفية
+                  </Form.Label>
+                  <Col>
+                    <Form.Control
+                      name="calls"
+                      required
+                      className={styles.input}
+                      type="number"
+                      placeholder="أدخل رقما"
+                      onChange={handleChange}
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className={styles.group}>
+                  <Form.Label className={styles.label} column sm="4">
+                    <FaIdCard className={styles.icons} /> عدد الاستشارات
+                    الكتابية
                   </Form.Label>
                   <Col>
                     <Form.Control
                       required
                       className={styles.input}
                       type="number"
-                      placeholder="أدخل اسمك"
+                      placeholder="أدخل رقما"
                     />
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row} className={styles.group}>
                   <Form.Label className={styles.label} column sm="4">
-                    <MdEmail className={styles.icons} /> الايميل
+                    <FaIdCard className={styles.icons} /> العمر
                   </Form.Label>
                   <Col>
                     <Form.Control
                       required
                       className={styles.input}
-                      type="email"
-                      placeholder="أدخل ايميلك"
+                      type="number"
+                      placeholder="أدخل رقما"
                     />
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row} className={styles.group}>
                   <Form.Label className={styles.label} column sm="4">
-                    <AiFillUnlock className={styles.icons} /> كلمة المرور
+                    <FaIdCard className={styles.icons} /> الحالة الاجتماعية
+                  </Form.Label>
+                  <Col>
+                    <Form.Check
+                      inline
+                      label="متزوج/ة"
+                      name="group1"
+                      type="radio"
+                      id="inline-radio-1"
+                    />
+                    <Form.Check
+                      inline
+                      label="غير متزوج/ة"
+                      name="group1"
+                      type="radio"
+                      id="inline-radio-1"
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className={styles.group}>
+                  <Form.Label className={styles.label} column sm="4">
+                    <FaIdCard className={styles.icons} /> الجنس
+                  </Form.Label>
+                  <Col>
+                    <Form.Check
+                      inline
+                      label="ذكر"
+                      name="group1"
+                      type="radio"
+                      id="inline-radio-1"
+                    />
+                    <Form.Check
+                      inline
+                      label="أنثى"
+                      name="group1"
+                      type="radio"
+                      id="inline-radio-1"
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className={styles.group}>
+                  <Form.Label className={styles.label} column sm="4">
+                    <FaIdCard className={styles.icons} /> هل تم تفعيل الحساب؟
+                  </Form.Label>
+                  <Col>
+                    <Form.Check
+                      inline
+                      label="نعم"
+                      name="group2"
+                      type="radio"
+                      id="inline-radio-1"
+                    />
+                    <Form.Check
+                      inline
+                      label="لا"
+                      name="group2"
+                      type="radio"
+                      id="inline-radio-1"
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className={styles.group}>
+                  <Form.Label className={styles.label} column sm="4">
+                    <FaIdCard className={styles.icons} /> عدد الجلسات التي أخذها
                   </Form.Label>
                   <Col>
                     <Form.Control
                       required
                       className={styles.input}
-                      type="password"
-                      placeholder="أدخل كلمة المرور"
+                      type="number"
+                      placeholder="أدخل رقما"
                     />
                   </Col>
                 </Form.Group>
-                <div>
-                  <Form.Group as={Row} className={styles.group}>
-                    <Form.Label className={styles.label} column sm="4">
-                      <AiFillUnlock className={styles.icons} />
-                      تأكيد كلمة المرور
-                    </Form.Label>
-                    <Col>
-                      <Form.Control
-                        required
-                        className={styles.input}
-                        type="password"
-                        placeholder="أعد ادخال كلمة المرور"
-                      />
-                    </Col>
-                  </Form.Group>
-                  <Form.Group as={Row} className={styles.group}>
-                    <Form.Label className={styles.label} column sm="4">
-                      <HiTag className={styles.icons} /> المرحلة الدراسية
-                    </Form.Label>
-                    <Col>
-                      <Form.Control as="select" className={styles.input}>
-                        <option>دون الابتدائي</option>
-                        <option>ابتدائي</option>
-                        <option>متوسط</option>
-                        <option>ثانوي</option>
-                        <option>جامعي</option>
-                        <option>أب</option>
-                      </Form.Control>
-                    </Col>
-                  </Form.Group>
-                </div>
+                <Form.Group as={Row} className={styles.group}>
+                  <Form.Label className={styles.label} column sm="4">
+                    <FaIdCard className={styles.icons} /> مجموع الجلسات المدفوعة
+                  </Form.Label>
+                  <Col>
+                    <Form.Control
+                      required
+                      className={styles.input}
+                      type="number"
+                      placeholder="أدخل رقما"
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className={styles.group}>
+                  <Form.Label className={styles.label} column sm="4">
+                    <FaIdCard className={styles.icons} /> مجموع كل المبالغ التي
+                    دفعها
+                  </Form.Label>
+                  <Col>
+                    <Form.Control
+                      required
+                      className={styles.input}
+                      type="number"
+                      placeholder="أدخل قيمة المبلغ"
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} className={styles.group}>
+                  <Form.Label className={styles.label} column sm="4">
+                    <FaIdCard className={styles.icons} /> مشكلة تعرض لهاالمستخدم
+                  </Form.Label>
+                  <Col>
+                    <Form.Control
+                      required
+                      className={styles.input}
+                      type="number"
+                      placeholder="اكتب تفاصيل المشكلة"
+                    />
+                  </Col>
+                </Form.Group>
               </Modal.Body>
               <Modal.Footer className={styles.footer}>
                 <Button
                   className={`${styles.createButton} ${styles.submit}`}
                   type="submit"
                 >
-                  أنشئ الحساب
+                  بحث
                 </Button>
               </Modal.Footer>
             </Container>
