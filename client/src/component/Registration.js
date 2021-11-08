@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Axios from "axios";
+import Axios from "axios";
 import "../App.css";
 import styles from "./main.module.css";
 import Modal from "react-bootstrap/Modal";
@@ -27,18 +27,29 @@ function Registration() {
   // const [review, setReview] = useState("");
   // const [movieReviewList, setMovieReviewList] = useState([]);
 
-  // const submitReview = () => {
-  //   Axios.post("https://crud-back-end-node.herokuapp.com/api/insert", {
-  //     movieName: movieName,
-  //     movieReview: review,
-  //   });
-  //   setMovieName("");
-  //   setReview("");
-  //   setMovieReviewList([
-  //     ...movieReviewList,
-  //     { name: movieName, review: review },
-  //   ]);
-  // };
+  const submitReview = (e) => {
+    e.preventDefault();
+    Axios.post("http://localhost:3001/api/main", {
+      calls: clientForm.calls,
+      written: clientForm.written,
+      age: clientForm.age,
+      gender: clientForm.gender,
+      martialStatus: clientForm.martialStatus,
+      verified: clientForm.verified,
+      sessionCount: clientForm.sessionCount,
+      paidCount: clientForm.paidCount,
+      price: clientForm.price,
+      problem: clientForm.problem,
+      // }).then((response) => {
+      //   console.log(response.data);
+    });
+    // setMovieName("");
+    // setReview("");
+    // setMovieReviewList([
+    //   ...movieReviewList,
+    //   { name: movieName, review: review },
+    // ]);
+  };
 
   const handleChange = (e) => {
     setClientForm({
@@ -125,6 +136,7 @@ function Registration() {
                   inline
                   label="متزوج/ة"
                   name="martialStatus"
+                  value={1}
                   type="radio"
                   id="inline-radio-1"
                   onChange={handleChange}
@@ -132,6 +144,7 @@ function Registration() {
                 <Form.Check
                   inline
                   label="غير متزوج/ة"
+                  value={0}
                   name="martialStatus"
                   type="radio"
                   id="inline-radio-1"
@@ -145,6 +158,7 @@ function Registration() {
               </Form.Label>
               <Col>
                 <Form.Check
+                  value={0}
                   inline
                   label="ذكر"
                   name="gender"
@@ -153,6 +167,7 @@ function Registration() {
                   onChange={handleChange}
                 />
                 <Form.Check
+                  value={1}
                   inline
                   label="أنثى"
                   name="gender"
@@ -168,6 +183,7 @@ function Registration() {
               </Form.Label>
               <Col>
                 <Form.Check
+                  value={1}
                   inline
                   label="نعم"
                   name="verified"
@@ -176,6 +192,7 @@ function Registration() {
                   onChange={handleChange}
                 />
                 <Form.Check
+                  value={0}
                   inline
                   label="لا"
                   name="verified"
@@ -251,6 +268,7 @@ function Registration() {
             <Button
               className={`${styles.createButton} ${styles.submit}`}
               type="submit"
+              onClick={submitReview}
             >
               بحث
             </Button>
