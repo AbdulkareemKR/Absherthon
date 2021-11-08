@@ -4,13 +4,13 @@ const mysql = require("mysql");
 const cors = require("cors");
 const app = express();
 
-// mysql://baa3edb8227a69:1dca83a3@us-cdbr-east-04.cleardb.com/heroku_14bd760e873f76d?reconnect=true
-// TAKE THE INFO FROM THE LINE ABOVE
+//mysql://b476717618491f:9f74fa26@us-cdbr-east-04.cleardb.com/heroku_883cdc9b7276b4a?reconnect=true
+
 const db = mysql.createPool({
   host: "us-cdbr-east-04.cleardb.com",
-  user: "baa3edb8227a69",
-  password: "1dca83a3",
-  database: "heroku_14bd760e873f76d",
+  user: "b476717618491f",
+  password: "9f74fa26",
+  database: "heroku_883cdc9b7276b4a",
 });
 
 app.use(cors()); //must be written
