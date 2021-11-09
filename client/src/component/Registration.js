@@ -28,7 +28,7 @@ function Registration() {
 
   const submitReview = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/api/main", {
+    Axios.post("https://absherthon.herokuapp.com/api/main", {
       calls: clientForm.calls,
       written: clientForm.written,
       age: clientForm.age,
@@ -43,7 +43,7 @@ function Registration() {
   };
 
   const getResult = () => {
-    Axios.get("http://localhost:3001/api/get").then((response) => {
+    Axios.get("https://absherthon.herokuapp.com/api/get").then((response) => {
       setResult(response.data);
     });
   };
@@ -122,6 +122,15 @@ function Registration() {
               <Col>
                 <Form.Check
                   inline
+                  label="أعزب/عزباء"
+                  value={"أعزب/عزباء"}
+                  name="martialStatus"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+                <Form.Check
+                  inline
                   label="متزوج/ة"
                   name="martialStatus"
                   value={"متزوج/ة"}
@@ -131,8 +140,17 @@ function Registration() {
                 />
                 <Form.Check
                   inline
-                  label="غير متزوج/ة"
-                  value={"غير متزوج/ة"}
+                  label="مطلق/ة"
+                  value={"مطلق/ة"}
+                  name="martialStatus"
+                  type="radio"
+                  id="inline-radio-1"
+                  onChange={handleChange}
+                />
+                <Form.Check
+                  inline
+                  label="أرمل/ة"
+                  value={"أرمل/ة"}
                   name="martialStatus"
                   type="radio"
                   id="inline-radio-1"
@@ -171,7 +189,7 @@ function Registration() {
               </Form.Label>
               <Col>
                 <Form.Check
-                  value={1}
+                  value={"True"}
                   inline
                   label="نعم"
                   name="verified"
@@ -180,7 +198,7 @@ function Registration() {
                   onChange={handleChange}
                 />
                 <Form.Check
-                  value={0}
+                  value={"False"}
                   inline
                   label="لا"
                   name="verified"
