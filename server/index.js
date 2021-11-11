@@ -4,6 +4,7 @@ const mysql = require("mysql");
 const cors = require("cors");
 const app = express();
 const algorithmia = require("algorithmia"); //fetching from ai projects
+const router = express.Router();
 
 //mysql://b476717618491f:9f74fa26@us-cdbr-east-04.cleardb.com/heroku_883cdc9b7276b4a?reconnect=true
 
@@ -56,6 +57,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 // app.get("/", (req, res) => {});
+// var requestTime = function (req, res, next) {
+//   req.requestTime = Date.now();
+//   next();
+// };
+
 app.post("/api/main", (req, res) => {
   const calls = req.body.calls;
   const written = req.body.written;
@@ -73,17 +79,21 @@ app.post("/api/main", (req, res) => {
 
   const apiKey = "simpTh/X9pl1sE6NZuqB1wFmv0L1";
   const client = algorithmia.client(apiKey);
-  client
+
+  console.log(input_sms);
+  const result = client
     .algo("salwakr1/famecare/0.1.0")
     .pipe(input_sms)
     .then(function (response) {
-      console.log(response.get());
-      app.get("/api/get", (req, res) => {
-        res.send(response.get());
-      });
+      console.log("aaaa");
     });
+  res.json(result);
 });
-
+// exports.index = (req, res) => {
+//   res.json({
+//     hellow: ["chris", "bi"],
+//   });
+// };
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {

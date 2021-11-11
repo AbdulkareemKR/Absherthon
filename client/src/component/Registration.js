@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Axios from "axios";
 import "../App.css";
@@ -28,7 +28,7 @@ function Registration() {
 
   const submitReview = (e) => {
     e.preventDefault();
-    Axios.post("https://absherthon.herokuapp.com/api/main", {
+    Axios.post("http://localhost:3001/api/main", {
       calls: clientForm.calls,
       written: clientForm.written,
       age: clientForm.age,
@@ -39,14 +39,18 @@ function Registration() {
       paidCount: clientForm.paidCount,
       price: clientForm.price,
       problem: clientForm.problem,
-    });
-  };
-
-  const getResult = () => {
-    Axios.get("https://absherthon.herokuapp.com/api/get").then((response) => {
+    }).then(function (response) {
+      console.log(response.data);
       setResult(response.data);
     });
   };
+
+  // const getResult = () => {
+  //   Axios.get("http://localhost:3001/api/get").then((response) => {
+  //     console.log(response.data);
+  //     setResult(response.data);
+  //   });
+  // };
 
   const handleChange = (e) => {
     setClientForm({
@@ -55,6 +59,19 @@ function Registration() {
       [e.target.name]: e.target.value.trim(),
     });
   };
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3001")
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json;
+  //       }
+  //     })
+  //     .then((jsonResponse) => {
+  //       console.log(jsonResponse.index);
+  //       setResult(jsonResponse.index);
+  //     });
+  // }, []);
 
   return (
     <div className={styles.containter}>
@@ -277,7 +294,7 @@ function Registration() {
               type="submit"
               onClick={(e) => {
                 submitReview(e);
-                getResult();
+                // getResult();
               }}
             >
               بحث
