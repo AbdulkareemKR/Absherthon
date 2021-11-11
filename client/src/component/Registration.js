@@ -28,7 +28,7 @@ function Registration() {
 
   const submitReview = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/api/main", {
+    Axios.post("https://absherthon.herokuapp.com/api/main", {
       calls: clientForm.calls,
       written: clientForm.written,
       age: clientForm.age,
