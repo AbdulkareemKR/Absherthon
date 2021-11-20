@@ -79,21 +79,21 @@ app.post("/api/main", (req, res) => {
 
   const apiKey = "simpTh/X9pl1sE6NZuqB1wFmv0L1";
   const client = algorithmia.client(apiKey);
-
-  // console.log(input_sms);
-  // const result = client
-  //   .algo("salwakr1/famecare/0.1.0")
-  //   .pipe(input_sms)
-  //   .then(function (response) {
-  //     console.log("aaaa");
-  //   });
-  res.json("The Answer");
+  client
+    .algo("salwakr1/famecare/0.1.0")
+    .pipe(input_sms)
+    .then((response) => {
+      console.log(response.get());
+      res.json(response.get());
+    });
 });
-// exports.index = (req, res) => {
-//   res.json({
-//     hellow: ["chris", "bi"],
-//   });
-// };
+
+//   exports.index = (req, res) => {
+//     res.json({
+//       hellow: ["chris", "bi"],
+//     });
+//   };
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
