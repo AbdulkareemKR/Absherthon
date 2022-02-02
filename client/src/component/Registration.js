@@ -45,13 +45,6 @@ function Registration() {
     });
   };
 
-  // const getResult = () => {
-  //   Axios.get("http://localhost:3001/api/get").then((response) => {
-  //     console.log(response.data);
-  //     setResult(response.data);
-  //   });
-  // };
-
   const handleChange = (e) => {
     setClientForm({
       ...clientForm,
@@ -59,19 +52,6 @@ function Registration() {
       [e.target.name]: e.target.value.trim(),
     });
   };
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3001")
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json;
-  //       }
-  //     })
-  //     .then((jsonResponse) => {
-  //       console.log(jsonResponse.index);
-  //       setResult(jsonResponse.index);
-  //     });
-  // }, []);
 
   return (
     <div className={styles.containter}>
@@ -96,7 +76,7 @@ function Registration() {
                   name="calls"
                   required
                   className={styles.input}
-                  type="number"
+                  type="textarea"
                   placeholder="أدخل رقما"
                   onChange={handleChange}
                 />
@@ -302,7 +282,6 @@ function Registration() {
           </Modal.Footer>
         </Container>
       </Form>
-      {console.log(clientForm)}
     </div>
   );
 }
